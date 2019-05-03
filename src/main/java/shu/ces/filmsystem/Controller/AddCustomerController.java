@@ -1,4 +1,4 @@
-package shu.ces.filmsystem.controller;
+package shu.ces.filmsystem.Controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
