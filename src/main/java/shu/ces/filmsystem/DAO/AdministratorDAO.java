@@ -1,9 +1,10 @@
-package DAO;
+package shu.ces.filmsystem.DAO;
 
-import Model.Administrator;
+import shu.ces.filmsystem.Model.Administrator;
 import java.sql.*;
 
 import DAO.BaseDAO;
+
 
 public class AdministratorDAO {
 	PreparedStatement pstmt;

@@ -4,7 +4,7 @@ public abstract class User {
     private int id;
     private String username;
     private String password;
-    private String imgUrl;
+    private String img;
 
     public int getId() {
         return id;
@@ -30,11 +30,11 @@ public abstract class User {
         this.password = password;
     }
 
-    public String getImgUrl() {
-        return imgUrl;
+    public String getImg() {
+        return img;
     }
 
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+    public void setImg(String img) {
+        this.img = img;
     }
 }

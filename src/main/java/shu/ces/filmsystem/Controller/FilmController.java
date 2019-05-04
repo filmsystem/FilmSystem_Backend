@@ -18,6 +18,7 @@ public class FilmController {
                            @RequestParam(value = "img" , defaultValue = "") String img,
                            @RequestParam("dircetor") Collection<String> director,
                            @RequestParam("casts") Collection<String> casts,
+                           @RequestParam("type") Collection<String> type,
                            @RequestParam("year") Integer year,
                            @RequestParam("countries") Collection<String> countries,
                            @RequestParam("summary") String summary){

@@ -7,6 +7,7 @@ public class Film {
     private double star;
     private String directors;
     private String casts;
+    private String type;
     private int year;
     private String countries;
     private String summary;
@@ -81,5 +82,13 @@ public class Film {
 
     public void setSummary(String summary) {
         this.summary = summary;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
