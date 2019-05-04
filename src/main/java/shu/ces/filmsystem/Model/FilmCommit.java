@@ -1,4 +1,4 @@
-package shu.ces.filmsystem.model;
+package shu.ces.filmsystem.Model;
 
 public class FilmCommit {
     private int id;

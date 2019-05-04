@@ -1,4 +1,4 @@
-package shu.ces.filmsystem.model;
+package shu.ces.filmsystem.Model;
 
 public class Customer extends User {
     private String gender;
