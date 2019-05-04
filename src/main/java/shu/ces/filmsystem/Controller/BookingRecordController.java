@@ -14,18 +14,20 @@ public class BookingRecordController {
     public static Logger log = LoggerFactory.getLogger(FilmShowController.class);
 
     @PostMapping("/bookingrecord")
-//    public boolean addBookingRecord(@RequestParam("filmId") Integer filmId, @RequestParam("cinemaId") Integer cinemaId, @RequestParam("officeId") Integer officeId,
-//                                    @RequestParam("beginTime") Timestamp beginTime, @RequestParam("duration") Integer duration, @RequestParam("price") double price){
-//        // log.info("cinemaId = " + cinemaId + ", officeId = " + officeId + ", row = " + row + ", col = " + col);
-//        try{
-//            // add to database
-//            return true;
-//        }
-//        catch(Exception e){
-//            e.printStackTrace();
-//            return false;
-//        }
-//    }
+    public boolean addBookingRecord(@RequestParam("userId") Integer userId,
+                                    @RequestParam("showId") Integer showId,
+                                    @RequestParam("row") Integer row,
+                                    @RequestParam("col") Integer col){
+        // log.info("cinemaId = " + cinemaId + ", officeId = " + officeId + ", row = " + row + ", col = " + col);
+        try{
+            // add to database
+            return true;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 
     @RequestMapping(value = "/bookingrecord", method = RequestMethod.GET)
     public BookingRecord getBookingRecord(@RequestParam Integer id){
@@ -34,7 +36,8 @@ public class BookingRecordController {
     }
 
     @RequestMapping(value = "/bookingrecord", method = RequestMethod.PUT)
-    public boolean updateBookingRecord(@RequestParam("id") Integer id, @RequestParam(value = "status", defaultValue ="-1") Integer status){
+    public boolean updateBookingRecord(@RequestParam("id") Integer id,
+                                       @RequestParam(value = "status", defaultValue ="-1") Integer status){
         // update booking record by id in database
         return true;
     }

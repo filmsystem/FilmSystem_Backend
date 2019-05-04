@@ -5,7 +5,6 @@ public class FilmComment {
     private int userId;
     private int filmId;
     private int filmStar;
-    private int cinemaStar;
     private String comment;
 
     public int getId() {
@@ -38,14 +37,6 @@ public class FilmComment {
 
     public void setFilmStar(int filmStar) {
         this.filmStar = filmStar;
-    }
-
-    public int getCinemaStar() {
-        return cinemaStar;
-    }
-
-    public void setCinemaStar(int cinemaStar) {
-        this.cinemaStar = cinemaStar;
     }
 
     public String getComment() {

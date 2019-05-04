@@ -10,6 +10,8 @@ public class BookingRecord {
     private Timestamp payTime;
     private String collectingString;
     private int status;
+    private int row;
+    private int col;
 
     public int getId() {
         return id;
@@ -66,5 +68,21 @@ public class BookingRecord {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
+    public void setCol(int col) {
+        this.col = col;
     }
 }

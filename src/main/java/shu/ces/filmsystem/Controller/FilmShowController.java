@@ -39,9 +39,9 @@ public class FilmShowController {
 
     @RequestMapping(value = "/filmshow", method = RequestMethod.PUT)
     public boolean updateFilmShow(@RequestParam("id") Integer id,
-                                  @RequestParam("officeId") Integer officeId,
-                                  @RequestParam("beginTime") Timestamp beginTime,
-                                  @RequestParam("seat") String seat){
+                                  @RequestParam(value = "officeId", defaultValue = "-1") Integer officeId,
+                                  @RequestParam(value = "beginTime", defaultValue = "-1") Timestamp beginTime,
+                                  @RequestParam(value = "seat", defaultValue = "-1") String seat){
         // update film show by id in database
         return true;
     }

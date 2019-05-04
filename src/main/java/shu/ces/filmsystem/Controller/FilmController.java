@@ -15,7 +15,7 @@ public class FilmController {
 
     @PostMapping("/film")
     public boolean addFilm(@RequestParam("name") String name,
-                           @RequestParam("img") String img,
+                           @RequestParam(value = "img" , defaultValue = "") String img,
                            @RequestParam("dircetor") Collection<String> director,
                            @RequestParam("casts") Collection<String> casts,
                            @RequestParam("year") Integer year,
@@ -38,6 +38,12 @@ public class FilmController {
         return null;
     }
 
+    @RequestMapping(value = "/cinema", method = RequestMethod.PUT)
+    public boolean updateFilm(@RequestParam("id") String id,
+                              @RequestParam(value = "img", defaultValue = "") String url){
+        // update cinema by id in database
+        return true;
+    }
 
     @RequestMapping(value = "/film", method = RequestMethod.DELETE)
     public boolean deleteFilm(@RequestParam Integer id){

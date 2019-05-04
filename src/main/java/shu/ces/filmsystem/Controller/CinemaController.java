@@ -14,6 +14,7 @@ public class CinemaController {
     @PostMapping("/cinema")
     public boolean addCustomer(@RequestParam("name") String name,
                                @RequestParam("password") String password,
+                               @RequestParam(value = "img", defaultValue = "") String url,
                                @RequestParam("city") String city,
                                @RequestParam("address") String address){
         // log.info("name = " + name + ", password = " + password + ", city = " + city + ", address = " + address);
@@ -36,6 +37,7 @@ public class CinemaController {
     @RequestMapping(value = "/cinema", method = RequestMethod.PUT)
     public boolean updateCinema(@RequestParam("id") String id,
                                 @RequestParam("password") String password,
+                                @RequestParam(value = "img", defaultValue = "") String url,
                                 @RequestParam("city") String city,
                                 @RequestParam("address") String address){
         // update cinema by id in database

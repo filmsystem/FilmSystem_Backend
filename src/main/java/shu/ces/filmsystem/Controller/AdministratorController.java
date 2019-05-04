@@ -12,7 +12,9 @@ public class AdministratorController {
     public static Logger log = LoggerFactory.getLogger(AdministratorController.class);
 
     @PostMapping("/administrator")
-    public boolean addAdministrator(@RequestParam("name") String name, @RequestParam("password") String password){
+    public boolean addAdministrator(@RequestParam("name") String name,
+                                    @RequestParam(value = "img", defaultValue = "") String url,
+                                    @RequestParam("password") String password){
         // log.info("name = " + name + ", password = " + password;
         try{
             // add to database
@@ -31,7 +33,9 @@ public class AdministratorController {
     }
 
     @RequestMapping(value = "/administrator", method = RequestMethod.PUT)
-    public boolean updateAdministrator(@RequestParam("id") Integer id, @RequestParam("password") String password){
+    public boolean updateAdministrator(@RequestParam("id") Integer id,
+                                       @RequestParam(value = "img", defaultValue = "") String url,
+                                       @RequestParam("password") String password){
         // update administrator by id in database
         return true;
     }

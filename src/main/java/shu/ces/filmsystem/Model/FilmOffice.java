@@ -1,6 +1,7 @@
 package shu.ces.filmsystem.Model;
 
 public class FilmOffice {
+    private int id;
     private int filmId;
     private int officeId;
     private int row;
@@ -36,5 +37,13 @@ public class FilmOffice {
 
     public void setCol(int col) {
         this.col = col;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

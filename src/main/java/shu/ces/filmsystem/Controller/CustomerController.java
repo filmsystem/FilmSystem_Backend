@@ -10,8 +10,11 @@ public class CustomerController {
     public static Logger log = LoggerFactory.getLogger(CustomerController.class);
 
     @PostMapping("/customer")
-    public boolean addCustomer(@RequestParam("name") String name, @RequestParam("password") String password,
-                              @RequestParam("gender") String gender, @RequestParam("phonenum") String phonenum){
+    public boolean addCustomer(@RequestParam("name") String name,
+                               @RequestParam("password") String password,
+                               @RequestParam(value = "img", defaultValue = "") String url,
+                               @RequestParam("gender") String gender,
+                               @RequestParam("phonenum") String phonenum){
         // log.info("name = " + name + ", password = " + password + ", gender = " + gender + ", phonenum = " + phonenum);
         try{
             // add to database
@@ -30,8 +33,11 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/customer", method = RequestMethod.PUT)
-    public boolean updateCustomer(@RequestParam("id") String id, @RequestParam("password") String password,
-                                @RequestParam("gender") String gender, @RequestParam("phonenum") String phonenum){
+    public boolean updateCustomer(@RequestParam("id") String id,
+                                  @RequestParam("password") String password,
+                                  @RequestParam(value = "img", defaultValue = "") String url,
+                                  @RequestParam("gender") String gender,
+                                  @RequestParam("phonenum") String phonenum){
         // update user by id in database
         return true;
     }

@@ -12,18 +12,20 @@ public class FilmCommentController {
     public static Logger log = LoggerFactory.getLogger(FilmOfficeController.class);
 
     @PostMapping("/filmcomment")
-//    public boolean addFilmComment(@RequestParam("recordId") Integer recordId, @RequestParam("officeId") Integer officeId,
-//                                 @RequestParam("row") Integer row, @RequestParam("col") Integer col){
-//        // log.info("cinemaId = " + cinemaId + ", officeId = " + officeId + ", row = " + row + ", col = " + col);
-//        try{
-//            // add to database
-//            return true;
-//        }
-//        catch(Exception e){
-//            e.printStackTrace();
-//            return false;
-//        }
-//    }
+    public boolean addFilmComment(@RequestParam("userId") Integer recordId,
+                                  @RequestParam("filmId") Integer filmId,
+                                  @RequestParam("filmStar") Integer filmStar,
+                                  @RequestParam("comment") String comment){
+        // log.info("cinemaId = " + cinemaId + ", officeId = " + officeId + ", row = " + row + ", col = " + col);
+        try{
+            // add to database
+            return true;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 
     @RequestMapping(value = "/filmcomment", method = RequestMethod.GET)
     public FilmComment getFilmComment(@RequestParam Integer id){
@@ -32,7 +34,9 @@ public class FilmCommentController {
     }
 
     @RequestMapping(value = "/filmcomment", method = RequestMethod.PUT)
-    public boolean updateFilmComment(@RequestParam("id") String id, @RequestParam("comment") String comment){
+    public boolean updateFilmComment(@RequestParam("id") String id,
+                                     @RequestParam("filmStar") Integer filmStar,
+                                     @RequestParam("comment") String comment){
         // update film comment by id in database
         return true;
     }
