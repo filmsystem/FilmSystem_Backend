@@ -6,15 +6,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import shu.ces.filmsystem.Model.Customer;
+import shu.ces.filmsystem.Model.FilmOffice;
 
 public class FilmOfficeController {
     public static Logger log = LoggerFactory.getLogger(FilmOfficeController.class);
 
     @PostMapping("/filmoffice")
-    public boolean addFilmOffice(@RequestParam("cinemaId") Integer cinemaId, @RequestParam("officeId") Integer officeId,
-                                 @RequestParam("row") Integer row, @RequestParam("col") Integer col){
-        log.info("cinemaId = " + cinemaId + ", officeId = " + officeId + ", row = " + row + ", col = " + col);
+    public boolean addFilmOffice(@RequestParam("cinemaId") Integer cinemaId,
+                                 @RequestParam("officeId") Integer officeId,
+                                 @RequestParam("row") Integer row,
+                                 @RequestParam("col") Integer col){
+        // log.info("cinemaId = " + cinemaId + ", officeId = " + officeId + ", row = " + row + ", col = " + col);
         try{
             // add to database
             return true;
@@ -26,13 +28,15 @@ public class FilmOfficeController {
     }
 
     @RequestMapping(value = "/filmoffice", method = RequestMethod.GET)
-    public Customer getFilmOffice(@RequestParam Integer id){
+    public FilmOffice getFilmOffice(@RequestParam Integer id){
         // find film office by id in database
         return null;
     }
 
     @RequestMapping(value = "/filmoffice", method = RequestMethod.PUT)
-    public boolean updateFilmOffice(@RequestParam("id") String id, @RequestParam("row") Integer row, @RequestParam("col") Integer col){
+    public boolean updateFilmOffice(@RequestParam("id") String id,
+                                    @RequestParam("row") Integer row,
+                                    @RequestParam("col") Integer col){
         // update film office by id in database
         return true;
     }

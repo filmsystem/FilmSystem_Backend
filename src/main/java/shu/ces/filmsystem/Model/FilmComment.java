@@ -1,6 +1,6 @@
 package shu.ces.filmsystem.Model;
 
-public class FilmCommit {
+public class FilmComment {
     private int id;
     private int userId;
     private int filmId;

@@ -2,7 +2,7 @@ package shu.ces.filmsystem.Model;
 
 import java.sql.Timestamp;
 
-public class BookinfRecord {
+public class BookingRecord {
     private int id;
     private int userId;
     private int showId;

@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import shu.ces.filmsystem.Model.Cinema;
 
 public class CinemaController {
-    public static Logger log = LoggerFactory.getLogger(CustomerController.class);
+    public static Logger log = LoggerFactory.getLogger(CinemaController.class);
 
     @PostMapping("/cinema")
-    public boolean addCustomer(@RequestParam("name") String name, @RequestParam("password") String password,
-                               @RequestParam("city") String city, @RequestParam("address") String address){
+    public boolean addCustomer(@RequestParam("name") String name,
+                               @RequestParam("password") String password,
+                               @RequestParam("city") String city,
+                               @RequestParam("address") String address){
         // log.info("name = " + name + ", password = " + password + ", city = " + city + ", address = " + address);
         try{
             // add to database
@@ -32,8 +34,10 @@ public class CinemaController {
     }
 
     @RequestMapping(value = "/cinema", method = RequestMethod.PUT)
-    public boolean updateCinema(@RequestParam("id") String id, @RequestParam("password") String password,
-                                @RequestParam("city") String city, @RequestParam("address") String address){
+    public boolean updateCinema(@RequestParam("id") String id,
+                                @RequestParam("password") String password,
+                                @RequestParam("city") String city,
+                                @RequestParam("address") String address){
         // update cinema by id in database
         return true;
     }

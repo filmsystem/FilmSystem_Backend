@@ -31,7 +31,7 @@ public class AdministratorController {
     }
 
     @RequestMapping(value = "/administrator", method = RequestMethod.PUT)
-    public boolean updateAdministrator(@RequestParam("id") String id, @RequestParam("password") String password){
+    public boolean updateAdministrator(@RequestParam("id") Integer id, @RequestParam("password") String password){
         // update administrator by id in database
         return true;
     }
