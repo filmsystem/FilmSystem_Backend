@@ -1,11 +1,17 @@
 package shu.ces.filmsystem.Tools;
 
+import java.util.ArrayList;
+
 public class SplitString {
-	public static String[] splitString(String str, String spstr){
+	public static ArrayList<String> splitString(String str, String spstr){
 		if(str == null || spstr == null) {
-			String[] array = new String[0];
-			return array;
+			return null;
 		}
-		return str.split(spstr);
+		ArrayList<String> arraylist = new ArrayList<String>();
+		var list = str.split(spstr);
+		for (int i = 0; i < list.length; i++) {
+			arraylist.add(list[i]);
+		}
+		return arraylist;
 	}
 }
