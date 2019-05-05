@@ -7,11 +7,11 @@ public class RandomString {
 
     public static String getRandomString(int length) {
         Random random = new Random();
-        StringBuffer sb = new StringBuffer();
+        StringBuffer buffer = new StringBuffer();
         for (int i = 0; i < length; i++) {
             int number = random.nextInt(62);
-            sb.append(str.charAt(number));
+            buffer.append(str.charAt(number));
         }
-        return sb.toString();
+        return buffer.toString();
     }
 }

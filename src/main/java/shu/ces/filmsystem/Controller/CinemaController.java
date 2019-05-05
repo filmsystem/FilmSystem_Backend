@@ -35,7 +35,7 @@ public class CinemaController {
     }
 
     @RequestMapping(value = "/cinema", method = RequestMethod.PUT)
-    public boolean updateCinema(@RequestParam("id") String id,
+    public boolean updateCinema(@RequestParam("id") Integer id,
                                 @RequestParam("password") String password,
                                 @RequestParam(value = "img", defaultValue = "") String url,
                                 @RequestParam("city") String city,

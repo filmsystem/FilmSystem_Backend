@@ -33,7 +33,7 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/customer", method = RequestMethod.PUT)
-    public boolean updateCustomer(@RequestParam("id") String id,
+    public boolean updateCustomer(@RequestParam("id") Integer id,
                                   @RequestParam("password") String password,
                                   @RequestParam(value = "img", defaultValue = "") String url,
                                   @RequestParam("gender") String gender,
