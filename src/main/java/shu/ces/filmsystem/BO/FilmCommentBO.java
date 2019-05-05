@@ -3,7 +3,7 @@ package shu.ces.filmsystem.BO;
 import shu.ces.filmsystem.Model.FilmComment;
 
 public class FilmCommentBO {
-    public boolean addComment(FilmComment comment){
+    public boolean insertComment(FilmComment comment){
         // add to database
         return true;
     }
@@ -13,8 +13,23 @@ public class FilmCommentBO {
         return true;
     }
 
-    public boolean updateComment(int id, int star, String comment){
+    public boolean updateComment(FilmComment comment){
         // update in database
         return true;
+    }
+
+    public FilmComment findFilmCommentById(int id){
+        // find in database
+        return null;
+    }
+
+    public FilmComment findFilmCommentByUserId(int userId){
+        // find in database
+        return null;
+    }
+
+    public FilmComment findFilmCommentByFilmId(int filmId){
+        // find in database
+        return null;
     }
 }

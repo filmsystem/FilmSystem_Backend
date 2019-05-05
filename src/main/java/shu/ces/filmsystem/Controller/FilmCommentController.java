@@ -24,7 +24,7 @@ public class FilmCommentController {
             Comment.setFilmId(filmId);
             Comment.setFilmStar(filmStar);
             Comment.setComment(comment);
-            return new FilmCommentBO().addComment(Comment);
+            return new FilmCommentBO().insertComment(Comment);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -34,21 +34,25 @@ public class FilmCommentController {
 
     @RequestMapping(value = "/filmcomment", method = RequestMethod.GET)
     public FilmComment getFilmComment(@RequestParam Integer id){
-        // find film comment by id in database
-        return null;
+        return new FilmCommentBO().findFilmCommentById(id);
     }
 
     @RequestMapping(value = "/filmcomment", method = RequestMethod.PUT)
-    public boolean updateFilmComment(@RequestParam("id") String id,
+    public boolean updateFilmComment(@RequestParam("id") Integer id,
                                      @RequestParam("filmStar") Integer filmStar,
                                      @RequestParam("comment") String comment){
-        // update film comment by id in database
-        return true;
+        FilmCommentBO commentBO = new FilmCommentBO();
+        FilmComment Comment = commentBO.findFilmCommentById(id);
+        if(comment == null){
+            return false;
+        }
+        Comment.setFilmStar(filmStar);
+        Comment.setComment(comment);
+        return commentBO.updateComment(Comment);
     }
 
     @RequestMapping(value = "/filmcomment", method = RequestMethod.DELETE)
     public boolean deleteFilmComment(@RequestParam Integer id){
-        // delete film comment by id in database
-        return true;
+        return new FilmCommentBO().deleteComment(id);
     }
 }

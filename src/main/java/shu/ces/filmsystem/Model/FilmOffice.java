@@ -2,18 +2,10 @@ package shu.ces.filmsystem.Model;
 
 public class FilmOffice {
     private int id;
-    private int filmId;
+    private int cinemaId;
     private int officeId;
     private int row;
     private int col;
-
-    public int getFilmId() {
-        return filmId;
-    }
-
-    public void setFilmId(int filmId) {
-        this.filmId = filmId;
-    }
 
     public int getOfficeId() {
         return officeId;
@@ -45,5 +37,13 @@ public class FilmOffice {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getCinemaId() {
+        return cinemaId;
+    }
+
+    public void setCinemaId(int cinemaId) {
+        this.cinemaId = cinemaId;
     }
 }
