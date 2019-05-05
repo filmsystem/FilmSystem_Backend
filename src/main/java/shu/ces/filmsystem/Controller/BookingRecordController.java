@@ -6,22 +6,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import shu.ces.filmsystem.BO.TicketOrderBO;
 import shu.ces.filmsystem.Model.BookingRecord;
-
-import java.sql.Timestamp;
 
 public class BookingRecordController {
     public static Logger log = LoggerFactory.getLogger(FilmShowController.class);
 
-    @PostMapping("/bookingrecord")
+    @PostMapping("/bookingticket/createorder")
     public boolean addBookingRecord(@RequestParam("userId") Integer userId,
                                     @RequestParam("showId") Integer showId,
                                     @RequestParam("row") Integer row,
                                     @RequestParam("col") Integer col){
         // log.info("cinemaId = " + cinemaId + ", officeId = " + officeId + ", row = " + row + ", col = " + col);
         try{
-            // add to database
-            return true;
+            BookingRecord record = new BookingRecord();
+            record.setUserId(userId);
+            record.setShowId(showId);
+            record.setRow(row);
+            record.setCol(col);
+            return new TicketOrderBO().createOrder(record);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -31,20 +34,18 @@ public class BookingRecordController {
 
     @RequestMapping(value = "/bookingrecord", method = RequestMethod.GET)
     public BookingRecord getBookingRecord(@RequestParam Integer id){
-        // find booking record by id in database
-        return null;
+        return new TicketOrderBO().findOrderById(id);
     }
 
-    @RequestMapping(value = "/bookingrecord", method = RequestMethod.PUT)
-    public boolean updateBookingRecord(@RequestParam("id") Integer id,
-                                       @RequestParam(value = "status", defaultValue ="-1") Integer status){
-        // update booking record by id in database
-        return true;
-    }
+//    @RequestMapping(value = "/bookingrecord", method = RequestMethod.PUT)
+//    public boolean updateBookingRecord(@RequestParam("id") Integer id,
+//                                       @RequestParam(value = "status", defaultValue ="-1") Integer status){
+//        // update booking record by id in database
+//        return true;
+//    }
 
     @RequestMapping(value = "/bookingrecord", method = RequestMethod.DELETE)
     public boolean deleteBookingRecord(@RequestParam Integer id){
-        // delete booking record by id in database
-        return true;
+        return new TicketOrderBO().deleteOrder(id);
     }
 }

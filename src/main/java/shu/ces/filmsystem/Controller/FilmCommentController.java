@@ -6,20 +6,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import shu.ces.filmsystem.BO.FilmCommentBO;
 import shu.ces.filmsystem.Model.FilmComment;
 
 public class FilmCommentController {
     public static Logger log = LoggerFactory.getLogger(FilmOfficeController.class);
 
     @PostMapping("/filmcomment")
-    public boolean addFilmComment(@RequestParam("userId") Integer recordId,
+    public boolean addFilmComment(@RequestParam("userId") Integer userId,
                                   @RequestParam("filmId") Integer filmId,
                                   @RequestParam("filmStar") Integer filmStar,
                                   @RequestParam("comment") String comment){
         // log.info("cinemaId = " + cinemaId + ", officeId = " + officeId + ", row = " + row + ", col = " + col);
         try{
-            // add to database
-            return true;
+            FilmComment Comment = new FilmComment();
+            Comment.setUserId(userId);
+            Comment.setFilmId(filmId);
+            Comment.setFilmStar(filmStar);
+            Comment.setComment(comment);
+            return new FilmCommentBO().addComment(Comment);
         }
         catch(Exception e){
             e.printStackTrace();

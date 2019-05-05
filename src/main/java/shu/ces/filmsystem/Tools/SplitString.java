@@ -7,7 +7,7 @@ public class SplitString {
 		if(str == null || spstr == null) {
 			return null;
 		}
-		ArrayList<String> arraylist = new ArrayList<String>();
+		ArrayList<String> arraylist = new ArrayList();
 		var list = str.split(spstr);
 		for (int i = 0; i < list.length; i++) {
 			arraylist.add(list[i]);
