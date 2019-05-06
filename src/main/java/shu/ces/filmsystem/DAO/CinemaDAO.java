@@ -1,10 +1,10 @@
-package DAO;
+package shu.ces.filmsystem.DAO;
 
-import Model.Cinema;
 import java.sql.*;
 import java.util.ArrayList;
 
 import DAO.BaseDAO;
+import shu.ces.filmsystem.Model.Cinema;
 
 public class CinemaDAO {
 	PreparedStatement pstmt;

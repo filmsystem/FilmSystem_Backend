@@ -1,10 +1,10 @@
-package DAO;
+package shu.ces.filmsystem.DAO;
 
-import Model.*;
 import java.sql.*;
 import java.util.ArrayList;
 
 import DAO.BaseDAO;
+import shu.ces.filmsystem.Model.Customer;
 
 public class CustomerDAO {
 	PreparedStatement pstmt;
@@ -62,7 +62,7 @@ public class CustomerDAO {
 				c.setPassword(rs.getString(3));
 				c.setImg(rs.getString(4));
 				c.setGender(rs.getString(5));
-				c.setPhonenum(rs.getString(6));
+				c.setPhoneNum(rs.getString(6));
 				c.setCity(rs.getString(7));
 				return c;
 			}
@@ -105,7 +105,7 @@ public class CustomerDAO {
 				c.setPassword(rs.getString(3));
 				c.setImg(rs.getString(4));
 				c.setGender(rs.getString(5));
-				c.setPhonenum(rs.getString(6));
+				c.setPhoneNum(rs.getString(6));
 				c.setCity(rs.getString(7));
 				al.add(c);
 			}
