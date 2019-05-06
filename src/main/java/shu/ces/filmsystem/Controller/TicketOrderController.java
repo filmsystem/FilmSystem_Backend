@@ -1,15 +1,12 @@
 package shu.ces.filmsystem.Controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import shu.ces.filmsystem.BO.BookingRecordBO;
 import shu.ces.filmsystem.BO.TicketOrderBO;
 import shu.ces.filmsystem.Model.BookingRecord;
 
 public class TicketOrderController {
-    @PostMapping("/bookingticket/createorder")
+    @PostMapping("/ticket/createOrder")
     public boolean createBookingRecord(@RequestParam("userId") Integer userId,
                                        @RequestParam("showId") Integer showId,
                                        @RequestParam("row") Integer row,
@@ -29,7 +26,7 @@ public class TicketOrderController {
         }
     }
 
-    @PutMapping("/bookingticket/payorder")
+    @PutMapping("/ticket/payOrder")
     public String payOrder(@RequestParam("id") Integer id){
         /**
          * @return: collect string or null
@@ -42,12 +39,21 @@ public class TicketOrderController {
         return null;
     }
 
-    @GetMapping("/bookingticket/collectstring")
+    @GetMapping("/ticket/collectString")
     public String getCollectString(@RequestParam("id") Integer id){
         /**
          * @return: collect string or null
          */
         BookingRecord record = new BookingRecordBO().findOrderById(id);
         return record != null ? record.getCollectingString() : null;
+    }
+
+    @PutMapping("/ticket/cancelOrder")
+    public boolean cancelOrder(@RequestParam("id") Integer id){
+        BookingRecord record = new BookingRecordBO().findOrderById(id);
+        if(record != null){
+            return new TicketOrderBO().cancelOrder(record);
+        }
+        return false;
     }
 }
