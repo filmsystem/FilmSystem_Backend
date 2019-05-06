@@ -2,6 +2,7 @@ package shu.ces.filmsystem.DAO;
 
 import shu.ces.filmsystem.Model.Administrator;
 import java.sql.*;
+import java.util.ArrayList;
 
 import DAO.BaseDAO;
 
@@ -9,14 +10,14 @@ import DAO.BaseDAO;
 public class AdministratorDAO {
 	PreparedStatement pstmt;
 
-	public boolean insertAdministrator(String username, String password, String img) {
+	public boolean insertAdministrator(Administrator admin) {
 		try {
 			BaseDAO BD = new BaseDAO();
 			Connection ct = BD.getConnection();
 			pstmt = ct.prepareStatement("insert into administrator (username, password, img) values(?,?,?)");
-			pstmt.setString(1, username);
-			pstmt.setString(2, password);
-			pstmt.setString(3, img);
+			pstmt.setString(1, admin.getUsername());
+			pstmt.setString(2, admin.getPassword());
+			pstmt.setString(3, admin.getImg());
 			pstmt.executeUpdate();
 			return true;
 		} catch (Exception e) {
@@ -41,24 +42,34 @@ public class AdministratorDAO {
 			return false;
 		}
 	}
+	
+	public ArrayList<Administrator> searchForList(){
+		ArrayList<Administrator> al = new ArrayList<Administrator>();
+		try {
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Administrator admin = new Administrator();
+				admin.setId(rs.getInt(1));
+				admin.setUsername(rs.getString(2));
+				admin.setPassword(rs.getString(3));
+				admin.setImg(rs.getString(4));
+				al.add(admin);
+			}
+			return al;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
-	public Administrator checkAdministrator(String username, String password) {
+	public ArrayList<Administrator> searchAdministrator(String username, String password) {
 		try {
 			BaseDAO BD = new BaseDAO();
 			Connection ct = BD.getConnection();
 			pstmt = ct.prepareStatement("select * from administrator where username=? and password=?");
 			pstmt.setString(1, username);
 			pstmt.setString(2, password);
-			ResultSet rs = pstmt.executeQuery();
-			while (rs.next()) {
-				Administrator c = new Administrator();
-				c.setId(rs.getInt(1));
-				c.setUsername(rs.getString(2));
-				c.setPassword(rs.getString(3));
-				c.setImg(rs.getString(4));
-				return c;
-			}
-			return null;
+			return searchForList();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -83,16 +94,16 @@ public class AdministratorDAO {
 		}
 	}
 
-	public boolean updateAdministrator(int id, String username, String password, String img) {
+	public boolean updateAdministrator(Administrator admin) {
 		try {
 			BaseDAO BD = new BaseDAO();
 			Connection ct = BD.getConnection();
 			pstmt = ct.prepareStatement(
-					"update customer set username=?,password=?,img=?,gender=?,phonenum=?,city=? where id=?");
-			pstmt.setString(1, username);
-			pstmt.setString(2, password);
-			pstmt.setString(3, img);
-			pstmt.setInt(4, id);
+					"update administrator set username=?,password=?,img=? where id=?");
+			pstmt.setString(1, admin.getUsername());
+			pstmt.setString(2, admin.getPassword());
+			pstmt.setString(3, admin.getImg());
+			pstmt.setInt(4, admin.getId());
 			pstmt.executeUpdate();
 			return true;
 		} catch (Exception e) {

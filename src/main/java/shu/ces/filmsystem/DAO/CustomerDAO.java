@@ -9,19 +9,18 @@ import shu.ces.filmsystem.Model.Customer;
 public class CustomerDAO {
 	PreparedStatement pstmt;
 
-	public boolean insertCustomer(String username, String password, String img, String gender, String phonenum,
-			String city) {
+	public boolean insertCustomer(Customer customer) {
 		try {
 			BaseDAO BD = new BaseDAO();
 			Connection ct = BD.getConnection();
 			pstmt = ct.prepareStatement(
 					"insert into customer (username, password, level, gender, phonenum, city) values(?,?,?,?,?,?)");
-			pstmt.setString(1, username);
-			pstmt.setString(2, password);
-			pstmt.setString(3, img);
-			pstmt.setString(4, gender);
-			pstmt.setString(5, phonenum);
-			pstmt.setString(6, city);
+			pstmt.setString(1, customer.getUsername());
+			pstmt.setString(2, customer.getPassword());
+			pstmt.setString(3, customer.getImg());
+			pstmt.setString(4, customer.getGender());
+			pstmt.setString(5, customer.getPhonenum());
+			pstmt.setString(6, customer.getCity());
 			pstmt.executeUpdate();
 			return true;
 		} catch (Exception e) {
@@ -47,7 +46,7 @@ public class CustomerDAO {
 		}
 	}
 
-	public Customer checkCustomer(String username, String password) {
+	public Customer searchCustomer(String username, String password) {
 		try {
 			BaseDAO BD = new BaseDAO();
 			Connection ct = BD.getConnection();
@@ -62,7 +61,7 @@ public class CustomerDAO {
 				c.setPassword(rs.getString(3));
 				c.setImg(rs.getString(4));
 				c.setGender(rs.getString(5));
-				c.setPhoneNum(rs.getString(6));
+				c.setPhonenum(rs.getString(6));
 				c.setCity(rs.getString(7));
 				return c;
 			}
@@ -105,7 +104,7 @@ public class CustomerDAO {
 				c.setPassword(rs.getString(3));
 				c.setImg(rs.getString(4));
 				c.setGender(rs.getString(5));
-				c.setPhoneNum(rs.getString(6));
+				c.setPhonenum(rs.getString(6));
 				c.setCity(rs.getString(7));
 				al.add(c);
 			}
@@ -116,20 +115,19 @@ public class CustomerDAO {
 		}
 	}
 
-	public boolean updateCustomer(int id, String username, String password, String img, String gender, String phonenum,
-			String city) {
+	public boolean updateCustomer(Customer customer) {
 		try {
 			BaseDAO BD = new BaseDAO();
 			Connection ct = BD.getConnection();
 			pstmt = ct.prepareStatement(
 					"update customer set username=?,password=?,img=?,gender=?,phonenum=?,city=? where id=?");
-			pstmt.setString(1, username);
-			pstmt.setString(2, password);
-			pstmt.setString(3, img);
-			pstmt.setString(4, gender);
-			pstmt.setString(5, phonenum);
-			pstmt.setString(6, city);
-			pstmt.setInt(7, id);
+			pstmt.setString(1, customer.getUsername());
+			pstmt.setString(2, customer.getPassword());
+			pstmt.setString(3, customer.getImg());
+			pstmt.setString(4, customer.getGender());
+			pstmt.setString(5, customer.getPhonenum());
+			pstmt.setString(6, customer.getCity());
+			pstmt.setInt(7, customer.getId());
 			pstmt.executeUpdate();
 			return true;
 		} catch (Exception e) {

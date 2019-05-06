@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import DAO.BaseDAO;
+import Model.Film;
 import shu.ces.filmsystem.Model.Cinema;
 
 public class CinemaDAO {
@@ -45,6 +46,27 @@ public class CinemaDAO {
 		}
 	}
 
+	public ArrayList<Cinema> searchForList() {
+		ArrayList<Cinema> al = new ArrayList<Cinema>();
+		try {
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Cinema cinema = new Cinema();
+				c.setId(rs.getInt(1));
+				c.setUsername(rs.getString(2));
+				c.setPassword(rs.getString(3));
+				c.setImg(rs.getString(4));
+				c.setCity(rs.getString(5));
+				c.setAddress(rs.getString(6));
+				al.add(cinema);
+			}
+			return al;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	public Cinema checkCinema(String username, String password) {
 		try {
 			BaseDAO BD = new BaseDAO();
@@ -94,18 +116,7 @@ public class CinemaDAO {
 			BaseDAO BD = new BaseDAO();
 			Connection ct = BD.getConnection();
 			pstmt = ct.prepareStatement("select * from cinema");
-			ResultSet rs = pstmt.executeQuery();
-			while (rs.next()) {
-				Cinema c = new Cinema();
-				c.setId(rs.getInt(1));
-				c.setUsername(rs.getString(2));
-				c.setPassword(rs.getString(3));
-				c.setImg(rs.getString(4));
-				c.setCity(rs.getString(5));
-				c.setAddress(rs.getString(6));
-				al.add(c);
-			}
-			return al;
+			return searchForList();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

@@ -1,4 +1,4 @@
-package DAO;
+package shu.ces.filmsystem.DAO;
 
 import java.sql.*;
 
