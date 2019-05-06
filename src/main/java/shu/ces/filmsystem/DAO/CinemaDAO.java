@@ -3,8 +3,8 @@ package shu.ces.filmsystem.DAO;
 import java.sql.*;
 import java.util.ArrayList;
 
-import DAO.BaseDAO;
-import Model.Film;
+import shu.ces.filmsystem.DAO.BaseDAO;
+import shu.ces.filmsystem.Model.Film;
 import shu.ces.filmsystem.Model.Cinema;
 
 public class CinemaDAO {
@@ -52,12 +52,12 @@ public class CinemaDAO {
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				Cinema cinema = new Cinema();
-				c.setId(rs.getInt(1));
-				c.setUsername(rs.getString(2));
-				c.setPassword(rs.getString(3));
-				c.setImg(rs.getString(4));
-				c.setCity(rs.getString(5));
-				c.setAddress(rs.getString(6));
+				cinema.setId(rs.getInt(1));
+				cinema.setUsername(rs.getString(2));
+				cinema.setPassword(rs.getString(3));
+				cinema.setImg(rs.getString(4));
+				cinema.setCity(rs.getString(5));
+				cinema.setAddress(rs.getString(6));
 				al.add(cinema);
 			}
 			return al;

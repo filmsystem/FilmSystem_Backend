@@ -3,7 +3,7 @@ package shu.ces.filmsystem.DAO;
 import java.sql.*;
 import java.util.ArrayList;
 
-import DAO.BaseDAO;
+import shu.ces.filmsystem.DAO.BaseDAO;
 import shu.ces.filmsystem.Model.Film;
 
 public class FilmDAO {

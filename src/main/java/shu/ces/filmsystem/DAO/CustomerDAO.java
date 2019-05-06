@@ -3,7 +3,7 @@ package shu.ces.filmsystem.DAO;
 import java.sql.*;
 import java.util.ArrayList;
 
-import DAO.BaseDAO;
+import shu.ces.filmsystem.DAO.BaseDAO;
 import shu.ces.filmsystem.Model.Customer;
 
 public class CustomerDAO {
@@ -19,7 +19,7 @@ public class CustomerDAO {
 			pstmt.setString(2, customer.getPassword());
 			pstmt.setString(3, customer.getImg());
 			pstmt.setString(4, customer.getGender());
-			pstmt.setString(5, customer.getPhonenum());
+			pstmt.setString(5, customer.getPhoneNum());
 			pstmt.setString(6, customer.getCity());
 			pstmt.executeUpdate();
 			return true;
@@ -61,7 +61,7 @@ public class CustomerDAO {
 				c.setPassword(rs.getString(3));
 				c.setImg(rs.getString(4));
 				c.setGender(rs.getString(5));
-				c.setPhonenum(rs.getString(6));
+				c.setPhoneNum(rs.getString(6));
 				c.setCity(rs.getString(7));
 				return c;
 			}
@@ -104,7 +104,7 @@ public class CustomerDAO {
 				c.setPassword(rs.getString(3));
 				c.setImg(rs.getString(4));
 				c.setGender(rs.getString(5));
-				c.setPhonenum(rs.getString(6));
+				c.setPhoneNum(rs.getString(6));
 				c.setCity(rs.getString(7));
 				al.add(c);
 			}
@@ -125,7 +125,7 @@ public class CustomerDAO {
 			pstmt.setString(2, customer.getPassword());
 			pstmt.setString(3, customer.getImg());
 			pstmt.setString(4, customer.getGender());
-			pstmt.setString(5, customer.getPhonenum());
+			pstmt.setString(5, customer.getPhoneNum());
 			pstmt.setString(6, customer.getCity());
 			pstmt.setInt(7, customer.getId());
 			pstmt.executeUpdate();
