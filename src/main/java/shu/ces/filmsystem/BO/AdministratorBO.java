@@ -1,25 +1,24 @@
 package shu.ces.filmsystem.BO;
 
+import shu.ces.filmsystem.DAO.AdministratorDAO;
 import shu.ces.filmsystem.Model.Administrator;
 
 public class AdministratorBO {
-    public boolean insertAdministrator(Administrator customer){
-        // add to database
-        return true;
+    public boolean insertAdministrator(Administrator administrator){
+        return new AdministratorDAO().insertAdministrator(administrator);
     }
 
-    public boolean updateAdministrator(Administrator customer){
-        // add to database
-        return true;
+    public boolean updateAdministrator(Administrator administrator){
+        return new AdministratorDAO().updateAdministrator(administrator);
     }
 
     public boolean deleteAdministrator(int id){
-        //delete in database
-        return true;
+        return new AdministratorDAO().deleteAdministrator(id);
     }
 
     public Administrator findAdministratorById(int id){
-        // find in database
+        // TODO: Fix bugs.
+        //return new AdministratorDAO().searchAdministrator(id);
         return null;
     }
 

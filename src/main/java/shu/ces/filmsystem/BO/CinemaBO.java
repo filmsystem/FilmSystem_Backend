@@ -1,21 +1,19 @@
 package shu.ces.filmsystem.BO;
 
+import shu.ces.filmsystem.DAO.CinemaDAO;
 import shu.ces.filmsystem.Model.Cinema;
 
 public class CinemaBO {
-    public boolean insertCinema(Cinema customer){
-        // add to database
-        return true;
+    public boolean insertCinema(Cinema cinema){
+        return new CinemaDAO().insertCinema(cinema);
     }
 
-    public boolean updateCinema(Cinema customer){
-        // add to database
-        return true;
+    public boolean updateCinema(Cinema cinema){
+        return new CinemaDAO().updateCinema(cinema);
     }
 
     public boolean deleteCinema(int id){
-        //delete in database
-        return true;
+        return new CinemaDAO().deleteCinema(id);
     }
 
     public Cinema findCinemaById(int id){
@@ -29,7 +27,8 @@ public class CinemaBO {
     }
 
     public int checkCinema(String username, String password){
-        // check
+        // TODO
+        //Cinema cinema = new CinemaDAO().getCinemaName();
         Cinema cinema = null;
         if(cinema != null){
             if(password.equals(cinema.getPassword())){

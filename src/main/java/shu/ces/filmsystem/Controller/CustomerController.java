@@ -3,6 +3,7 @@ package shu.ces.filmsystem.Controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
+import shu.ces.filmsystem.BO.CustomerBO;
 import shu.ces.filmsystem.Model.Customer;
 
 @RestController
@@ -10,15 +11,20 @@ public class CustomerController {
     public static Logger log = LoggerFactory.getLogger(CustomerController.class);
 
     @PostMapping("/customer")
-    public boolean addCustomer(@RequestParam("name") String name,
+    public boolean insertCustomer(@RequestParam("name") String name,
                                @RequestParam("password") String password,
-                               @RequestParam(value = "img", defaultValue = "") String url,
+                               @RequestParam(value = "img", defaultValue = "") String img,
                                @RequestParam("gender") String gender,
                                @RequestParam("phonenum") String phonenum){
         // log.info("name = " + name + ", password = " + password + ", gender = " + gender + ", phonenum = " + phonenum);
         try{
-            // add to database
-            return true;
+            Customer customer = new Customer();
+            customer.setUsername(name);
+            customer.setPassword(password);
+            customer.setImg(img);
+            customer.setGender(gender);
+            customer.setPhoneNum(phonenum);
+            return new CustomerBO().insertCustomer(customer);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -28,23 +34,26 @@ public class CustomerController {
 
     @RequestMapping(value = "/customer", method = RequestMethod.GET)
     public Customer getCustomer(@RequestParam Integer id){
-        // find user by id in database
-        return null;
+        return new CustomerBO().findCustomerById(id);
     }
 
     @RequestMapping(value = "/customer", method = RequestMethod.PUT)
     public boolean updateCustomer(@RequestParam("id") Integer id,
                                   @RequestParam("password") String password,
-                                  @RequestParam(value = "img", defaultValue = "") String url,
+                                  @RequestParam(value = "img", defaultValue = "") String img,
                                   @RequestParam("gender") String gender,
                                   @RequestParam("phonenum") String phonenum){
-        // update user by id in database
-        return true;
+        CustomerBO customerBO = new CustomerBO();
+        Customer customer = customerBO.findCustomerById(id);
+        customer.setPassword(password);
+        customer.setImg(img);
+        customer.setGender(gender);
+        customer.setPhoneNum(phonenum);
+        return customerBO.updateCustomer(customer);
     }
 
     @RequestMapping(value = "/customer", method = RequestMethod.DELETE)
     public boolean deleteCustomer(@RequestParam Integer id){
-        // delete user by id in database
-        return true;
+        return new CustomerBO().deleteCustomer(id);
     }
 }

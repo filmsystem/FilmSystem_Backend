@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import shu.ces.filmsystem.BO.AdministratorBO;
 import shu.ces.filmsystem.Model.Administrator;
 
 public class AdministratorController {
@@ -13,12 +14,15 @@ public class AdministratorController {
 
     @PostMapping("/administrator")
     public boolean addAdministrator(@RequestParam("name") String name,
-                                    @RequestParam(value = "img", defaultValue = "") String url,
+                                    @RequestParam(value = "img", defaultValue = "") String img,
                                     @RequestParam("password") String password){
         // log.info("name = " + name + ", password = " + password;
         try{
-            // add to database
-            return true;
+            Administrator administrator = new Administrator();
+            administrator.setUsername(name);
+            administrator.setPassword(password);
+            administrator.setImg(img);
+            return new AdministratorBO().insertAdministrator(administrator);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -34,15 +38,17 @@ public class AdministratorController {
 
     @RequestMapping(value = "/administrator", method = RequestMethod.PUT)
     public boolean updateAdministrator(@RequestParam("id") Integer id,
-                                       @RequestParam(value = "img", defaultValue = "") String url,
+                                       @RequestParam(value = "img", defaultValue = "") String img,
                                        @RequestParam("password") String password){
-        // update administrator by id in database
-        return true;
+        AdministratorBO administratorBO = new AdministratorBO();
+        Administrator administrator = administratorBO.findAdministratorById(id);
+        administrator.setImg(img);
+        administrator.setPassword(password);
+        return administratorBO.updateAdministrator(administrator);
     }
 
     @RequestMapping(value = "/administrator", method = RequestMethod.DELETE)
     public boolean deleteAdministrator(@RequestParam Integer id){
-        // delete administrator by id in database
-        return true;
+        return new AdministratorBO().deleteAdministrator(id);
     }
 }
