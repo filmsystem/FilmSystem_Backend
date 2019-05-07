@@ -1,11 +1,15 @@
 package shu.ces.filmsystem.Controller;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import shu.ces.filmsystem.BO.AdministratorBO;
 import shu.ces.filmsystem.BO.CinemaBO;
 import shu.ces.filmsystem.BO.CustomerBO;
 
+@RestController
+@RequestMapping("/api")
 public class LoginController {
     @PostMapping("/login")
     public int checkUser(@RequestParam("username") String username,

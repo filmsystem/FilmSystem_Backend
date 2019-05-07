@@ -7,6 +7,7 @@ import shu.ces.filmsystem.BO.CustomerBO;
 import shu.ces.filmsystem.Model.Customer;
 
 @RestController
+@RequestMapping("/api")
 public class CustomerController {
     public static Logger log = LoggerFactory.getLogger(CustomerController.class);
 

@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import shu.ces.filmsystem.BO.BookingRecordBO;
 import shu.ces.filmsystem.Model.BookingRecord;
 
+@RestController
+@RequestMapping("/api")
 public class BookingRecordController {
     public static Logger log = LoggerFactory.getLogger(FilmShowController.class);
 

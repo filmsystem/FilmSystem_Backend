@@ -5,6 +5,8 @@ import shu.ces.filmsystem.BO.BookingRecordBO;
 import shu.ces.filmsystem.BO.TicketOrderBO;
 import shu.ces.filmsystem.Model.BookingRecord;
 
+@RestController
+@RequestMapping("/api")
 public class TicketOrderController {
     @PostMapping("/ticket/createOrder")
     public boolean createBookingRecord(@RequestParam("userId") Integer userId,

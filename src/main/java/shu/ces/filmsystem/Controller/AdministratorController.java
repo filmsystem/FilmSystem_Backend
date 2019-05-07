@@ -2,13 +2,12 @@ package shu.ces.filmsystem.Controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import shu.ces.filmsystem.BO.AdministratorBO;
 import shu.ces.filmsystem.Model.Administrator;
 
+@RestController
+@RequestMapping("/api")
 public class AdministratorController {
     public static Logger log = LoggerFactory.getLogger(AdministratorController.class);
 
@@ -30,10 +29,22 @@ public class AdministratorController {
         }
     }
 
-    @RequestMapping(value = "/administrator", method = RequestMethod.GET)
-    public Administrator getAdministrator(@RequestParam Integer id){
-        // find administrator by id in database
+    @GetMapping("/administrator")
+    public Administrator getAllAdministrator(){
+        // find all administrator by id in database
         return null;
+    }
+
+    @RequestMapping(value = "/administrator/{id}", method = RequestMethod.GET)
+    public Administrator getAdministrator(@PathVariable Integer id){
+        // find administrator by id in database
+        return new AdministratorBO().findAdministratorById(id);
+    }
+
+    @RequestMapping(value = "/administrator", method = RequestMethod.GET)
+    public Administrator getAdministrator(@RequestParam String name){
+        // find administrator by id in database
+        return new AdministratorBO().findAdministratorByName(name);
     }
 
     @RequestMapping(value = "/administrator", method = RequestMethod.PUT)

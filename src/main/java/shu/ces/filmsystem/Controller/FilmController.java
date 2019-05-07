@@ -2,23 +2,22 @@ package shu.ces.filmsystem.Controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import shu.ces.filmsystem.BO.FilmBO;
 import shu.ces.filmsystem.Model.Film;
 import shu.ces.filmsystem.Tools.ListToString;
 
 import java.util.Collection;
 
+@RestController
+@RequestMapping("/api")
 public class FilmController {
     public static Logger log = LoggerFactory.getLogger(FilmController.class);
 
     @PostMapping("/film")
-    public boolean addFilm(@RequestParam("name") String name,
+    public boolean insertFilm(@RequestParam("name") String name,
                            @RequestParam(value = "img" , defaultValue = "") String img,
-                           @RequestParam("dircetor") Collection<String> directors,
+                           @RequestParam("dircetors") Collection<String> directors,
                            @RequestParam("casts") Collection<String> casts,
                            @RequestParam("type") Collection<String> type,
                            @RequestParam("year") Integer year,

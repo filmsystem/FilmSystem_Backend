@@ -2,13 +2,12 @@ package shu.ces.filmsystem.Controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import shu.ces.filmsystem.BO.FilmOfficeBO;
 import shu.ces.filmsystem.Model.FilmOffice;
 
+@RestController
+@RequestMapping("/api")
 public class FilmOfficeController {
     public static Logger log = LoggerFactory.getLogger(FilmOfficeController.class);
 
