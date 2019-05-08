@@ -1,8 +1,8 @@
-package shu.ces.filmsystem.BO;
+package shu.ces.filmsystem.Service;
 
 import shu.ces.filmsystem.Model.Customer;
 
-public class CustomerBO {
+public class CustomerService {
     public boolean insertCustomer(Customer customer){
         // add to database
         return true;

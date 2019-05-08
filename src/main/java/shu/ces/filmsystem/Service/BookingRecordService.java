@@ -1,10 +1,10 @@
-package shu.ces.filmsystem.BO;
+package shu.ces.filmsystem.Service;
 
 import shu.ces.filmsystem.Model.BookingRecord;
 
 import java.util.ArrayList;
 
-public class BookingRecordBO {
+public class BookingRecordService {
     public ArrayList<BookingRecord> findOrderByUserId(int userId){
         ArrayList<BookingRecord> list = new ArrayList<>();
         // find in database

@@ -1,10 +1,10 @@
-package shu.ces.filmsystem.BO;
+package shu.ces.filmsystem.Service;
 
 import shu.ces.filmsystem.Model.FilmOffice;
 
 import java.util.ArrayList;
 
-public class FilmOfficeBO {
+public class FilmOfficeService {
     public boolean createOffice(FilmOffice office){
         // add to database
         return true;

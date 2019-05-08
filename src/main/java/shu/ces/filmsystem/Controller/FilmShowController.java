@@ -3,7 +3,7 @@ package shu.ces.filmsystem.Controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import shu.ces.filmsystem.BO.FilmShowBO;
+import shu.ces.filmsystem.Service.FilmShowService;
 import shu.ces.filmsystem.Model.FilmShow;
 
 import java.sql.Timestamp;
@@ -29,7 +29,7 @@ public class FilmShowController {
             show.setBeginTime(beginTime);
             show.setDuration(duration);
             show.setPrice(price);
-            return new FilmShowBO().createShow(show);
+            return new FilmShowService().createShow(show);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -39,7 +39,7 @@ public class FilmShowController {
 
     @RequestMapping(value = "/filmshow", method = RequestMethod.GET)
     public FilmShow getFilmShow(@RequestParam Integer id){
-        return new FilmShowBO().findShowById(id);
+        return new FilmShowService().findShowById(id);
     }
 
     @RequestMapping(value = "/filmshow", method = RequestMethod.PUT)
@@ -47,7 +47,7 @@ public class FilmShowController {
                                   @RequestParam(value = "officeId") Integer officeId,
                                   @RequestParam(value = "beginTime") Timestamp beginTime,
                                   @RequestParam(value = "seat") String seat){
-        FilmShowBO showBO = new FilmShowBO();
+        FilmShowService showBO = new FilmShowService();
         FilmShow show = showBO.findShowById(id);
         show.setOfficeId(officeId);
         show.setBeginTime(beginTime);
@@ -57,6 +57,6 @@ public class FilmShowController {
 
     @RequestMapping(value = "/filmshow", method = RequestMethod.DELETE)
     public boolean deleteFilmShow(@RequestParam Integer id){
-        return new FilmShowBO().deleteShow(id);
+        return new FilmShowService().deleteShow(id);
     }
 }

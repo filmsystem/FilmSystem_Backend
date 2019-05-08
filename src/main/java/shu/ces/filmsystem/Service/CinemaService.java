@@ -1,9 +1,9 @@
-package shu.ces.filmsystem.BO;
+package shu.ces.filmsystem.Service;
 
 import shu.ces.filmsystem.DAO.CinemaDAO;
 import shu.ces.filmsystem.Model.Cinema;
 
-public class CinemaBO {
+public class CinemaService {
     public boolean insertCinema(Cinema cinema){
         return new CinemaDAO().insertCinema(cinema);
     }

@@ -1,10 +1,10 @@
-package shu.ces.filmsystem.BO;
+package shu.ces.filmsystem.Service;
 
 import shu.ces.filmsystem.Model.FilmShow;
 
 import java.util.ArrayList;
 
-public class FilmShowBO {
+public class FilmShowService {
     public boolean createShow (FilmShow show){
 
         StringBuffer buffer = new StringBuffer();

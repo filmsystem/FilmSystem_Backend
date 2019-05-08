@@ -1,8 +1,8 @@
 package shu.ces.filmsystem.Controller;
 
 import org.springframework.web.bind.annotation.*;
-import shu.ces.filmsystem.BO.BookingRecordBO;
-import shu.ces.filmsystem.BO.TicketOrderBO;
+import shu.ces.filmsystem.Service.BookingRecordService;
+import shu.ces.filmsystem.Service.TicketOrderService;
 import shu.ces.filmsystem.Model.BookingRecord;
 
 @RestController
@@ -20,7 +20,7 @@ public class TicketOrderController {
             record.setShowId(showId);
             record.setRow(row);
             record.setCol(col);
-            return new TicketOrderBO().createOrder(record);
+            return new TicketOrderService().createOrder(record);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -33,8 +33,8 @@ public class TicketOrderController {
         /**
          * @return: collect string or null
          */
-        TicketOrderBO orderBO = new TicketOrderBO();
-        BookingRecord record = new BookingRecordBO().findOrderById(id);
+        TicketOrderService orderBO = new TicketOrderService();
+        BookingRecord record = new BookingRecordService().findOrderById(id);
         if(orderBO.payOrder(record)){
             return orderBO.getCollectString(record);
         }
@@ -46,15 +46,15 @@ public class TicketOrderController {
         /**
          * @return: collect string or null
          */
-        BookingRecord record = new BookingRecordBO().findOrderById(id);
+        BookingRecord record = new BookingRecordService().findOrderById(id);
         return record != null ? record.getCollectingString() : null;
     }
 
     @PutMapping("/ticket/cancelOrder")
     public boolean cancelOrder(@RequestParam("id") Integer id){
-        BookingRecord record = new BookingRecordBO().findOrderById(id);
+        BookingRecord record = new BookingRecordService().findOrderById(id);
         if(record != null){
-            return new TicketOrderBO().cancelOrder(record);
+            return new TicketOrderService().cancelOrder(record);
         }
         return false;
     }

@@ -1,8 +1,8 @@
-package shu.ces.filmsystem.BO;
+package shu.ces.filmsystem.Service;
 
 import shu.ces.filmsystem.Model.FilmComment;
 
-public class FilmCommentBO {
+public class FilmCommentService {
     public boolean insertComment(FilmComment comment){
         // add to database
         return true;

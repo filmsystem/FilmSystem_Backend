@@ -3,7 +3,7 @@ package shu.ces.filmsystem.Controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import shu.ces.filmsystem.BO.CustomerBO;
+import shu.ces.filmsystem.Service.CustomerService;
 import shu.ces.filmsystem.Model.Customer;
 
 @RestController
@@ -25,7 +25,7 @@ public class CustomerController {
             customer.setImg(img);
             customer.setGender(gender);
             customer.setPhoneNum(phonenum);
-            return new CustomerBO().insertCustomer(customer);
+            return new CustomerService().insertCustomer(customer);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -35,7 +35,7 @@ public class CustomerController {
 
     @RequestMapping(value = "/customer", method = RequestMethod.GET)
     public Customer getCustomer(@RequestParam Integer id){
-        return new CustomerBO().findCustomerById(id);
+        return new CustomerService().findCustomerById(id);
     }
 
     @RequestMapping(value = "/customer", method = RequestMethod.PUT)
@@ -44,7 +44,7 @@ public class CustomerController {
                                   @RequestParam(value = "img", defaultValue = "") String img,
                                   @RequestParam("gender") String gender,
                                   @RequestParam("phonenum") String phonenum){
-        CustomerBO customerBO = new CustomerBO();
+        CustomerService customerBO = new CustomerService();
         Customer customer = customerBO.findCustomerById(id);
         customer.setPassword(password);
         customer.setImg(img);
@@ -55,6 +55,6 @@ public class CustomerController {
 
     @RequestMapping(value = "/customer", method = RequestMethod.DELETE)
     public boolean deleteCustomer(@RequestParam Integer id){
-        return new CustomerBO().deleteCustomer(id);
+        return new CustomerService().deleteCustomer(id);
     }
 }

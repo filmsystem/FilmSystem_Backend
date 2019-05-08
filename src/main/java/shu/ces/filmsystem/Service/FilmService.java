@@ -1,10 +1,10 @@
-package shu.ces.filmsystem.BO;
+package shu.ces.filmsystem.Service;
 
 import shu.ces.filmsystem.Model.Film;
 
 import java.util.ArrayList;
 
-public class FilmBO {
+public class FilmService {
     public boolean insertFilm(Film film){
         // insert into database
         film.setStar(0);

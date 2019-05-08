@@ -3,7 +3,7 @@ package shu.ces.filmsystem.Controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import shu.ces.filmsystem.BO.CinemaBO;
+import shu.ces.filmsystem.Service.CinemaService;
 import shu.ces.filmsystem.Model.Cinema;
 
 @RestController
@@ -25,7 +25,7 @@ public class CinemaController {
             cinema.setImg(img);
             cinema.setCity(city);
             cinema.setAddress(address);
-            return new CinemaBO().insertCinema(cinema);
+            return new CinemaService().insertCinema(cinema);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -35,7 +35,7 @@ public class CinemaController {
 
     @RequestMapping(value = "/cinema", method = RequestMethod.GET)
     public Cinema getCinema(@RequestParam Integer id){
-        return new CinemaBO().findCinemaById(id);
+        return new CinemaService().findCinemaById(id);
     }
 
     @RequestMapping(value = "/cinema", method = RequestMethod.PUT)
@@ -44,7 +44,7 @@ public class CinemaController {
                                 @RequestParam(value = "img", defaultValue = "") String img,
                                 @RequestParam("city") String city,
                                 @RequestParam("address") String address){
-        CinemaBO cinemaBO = new CinemaBO();
+        CinemaService cinemaBO = new CinemaService();
         Cinema cinema = cinemaBO.findCinemaById(id);
         cinema.setPassword(password);
         cinema.setImg(img);
@@ -55,6 +55,6 @@ public class CinemaController {
 
     @RequestMapping(value = "/cinema", method = RequestMethod.DELETE)
     public boolean deleteCustomer(@RequestParam Integer id){
-        return new CinemaBO().deleteCinema(id);
+        return new CinemaService().deleteCinema(id);
     }
 }

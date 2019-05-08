@@ -3,7 +3,7 @@ package shu.ces.filmsystem.Controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import shu.ces.filmsystem.BO.AdministratorBO;
+import shu.ces.filmsystem.Service.AdministratorService;
 import shu.ces.filmsystem.Model.Administrator;
 
 @RestController
@@ -21,7 +21,7 @@ public class AdministratorController {
             administrator.setUsername(name);
             administrator.setPassword(password);
             administrator.setImg(img);
-            return new AdministratorBO().insertAdministrator(administrator);
+            return new AdministratorService().insertAdministrator(administrator);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -38,28 +38,28 @@ public class AdministratorController {
     @RequestMapping(value = "/administrator/{id}", method = RequestMethod.GET)
     public Administrator getAdministrator(@PathVariable Integer id){
         // find administrator by id in database
-        return new AdministratorBO().findAdministratorById(id);
+        return new AdministratorService().findAdministratorById(id);
     }
 
     @RequestMapping(value = "/administrator", method = RequestMethod.GET)
     public Administrator getAdministrator(@RequestParam String name){
         // find administrator by id in database
-        return new AdministratorBO().findAdministratorByName(name);
+        return new AdministratorService().findAdministratorByName(name);
     }
 
     @RequestMapping(value = "/administrator", method = RequestMethod.PUT)
     public boolean updateAdministrator(@RequestParam("id") Integer id,
                                        @RequestParam(value = "img", defaultValue = "") String img,
                                        @RequestParam("password") String password){
-        AdministratorBO administratorBO = new AdministratorBO();
-        Administrator administrator = administratorBO.findAdministratorById(id);
+        AdministratorService administratorService = new AdministratorService();
+        Administrator administrator = administratorService.findAdministratorById(id);
         administrator.setImg(img);
         administrator.setPassword(password);
-        return administratorBO.updateAdministrator(administrator);
+        return administratorService.updateAdministrator(administrator);
     }
 
     @RequestMapping(value = "/administrator", method = RequestMethod.DELETE)
     public boolean deleteAdministrator(@RequestParam Integer id){
-        return new AdministratorBO().deleteAdministrator(id);
+        return new AdministratorService().deleteAdministrator(id);
     }
 }

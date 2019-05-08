@@ -1,9 +1,9 @@
-package shu.ces.filmsystem.BO;
+package shu.ces.filmsystem.Service;
 
 import shu.ces.filmsystem.DAO.AdministratorDAO;
 import shu.ces.filmsystem.Model.Administrator;
 
-public class AdministratorBO {
+public class AdministratorService {
     public boolean insertAdministrator(Administrator administrator){
         return new AdministratorDAO().insertAdministrator(administrator);
     }

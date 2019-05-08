@@ -3,7 +3,7 @@ package shu.ces.filmsystem.Controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import shu.ces.filmsystem.BO.FilmOfficeBO;
+import shu.ces.filmsystem.Service.FilmOfficeService;
 import shu.ces.filmsystem.Model.FilmOffice;
 
 @RestController
@@ -23,7 +23,7 @@ public class FilmOfficeController {
             office.setOfficeId(officeId);
             office.setRow(row);
             office.setCol(col);
-            return new FilmOfficeBO().createOffice(office);
+            return new FilmOfficeService().createOffice(office);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -33,14 +33,14 @@ public class FilmOfficeController {
 
     @RequestMapping(value = "/filmoffice", method = RequestMethod.GET)
     public FilmOffice getFilmOffice(@RequestParam Integer id){
-        return new FilmOfficeBO().findOfficeById(id);
+        return new FilmOfficeService().findOfficeById(id);
     }
 
     @RequestMapping(value = "/filmoffice", method = RequestMethod.PUT)
     public boolean updateFilmOffice(@RequestParam("id") Integer id,
                                     @RequestParam("row") Integer row,
                                     @RequestParam("col") Integer col){
-        FilmOfficeBO officeBO = new FilmOfficeBO();
+        FilmOfficeService officeBO = new FilmOfficeService();
         if(officeBO == null){
             return false;
         }
@@ -52,6 +52,6 @@ public class FilmOfficeController {
 
     @RequestMapping(value = "/filmoffice", method = RequestMethod.DELETE)
     public boolean deleteFilmOffice(@RequestParam Integer id){
-        return new FilmOfficeBO().deleteOffice(id);
+        return new FilmOfficeService().deleteOffice(id);
     }
 }

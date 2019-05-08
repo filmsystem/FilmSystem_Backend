@@ -4,9 +4,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import shu.ces.filmsystem.BO.AdministratorBO;
-import shu.ces.filmsystem.BO.CinemaBO;
-import shu.ces.filmsystem.BO.CustomerBO;
+import shu.ces.filmsystem.Service.AdministratorService;
+import shu.ces.filmsystem.Service.CinemaService;
+import shu.ces.filmsystem.Service.CustomerService;
 
 @RestController
 @RequestMapping("/api")
@@ -23,11 +23,11 @@ public class LoginController {
          */
         switch(identity){
             case 1:     // customer
-                return new CustomerBO().checkCustomer(username, password);
+                return new CustomerService().checkCustomer(username, password);
             case 2:     // cinema
-                return new CinemaBO().checkCinema(username, password);
+                return new CinemaService().checkCinema(username, password);
             case 3:     // administrator
-                return new AdministratorBO().checkAdministrator(username, password);
+                return new AdministratorService().checkAdministrator(username, password);
         }
         return -1;
     }

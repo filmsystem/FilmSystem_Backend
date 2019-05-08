@@ -1,12 +1,11 @@
-package shu.ces.filmsystem.BO;
+package shu.ces.filmsystem.Service;
 
 import shu.ces.filmsystem.Model.BookingRecord;
 import shu.ces.filmsystem.Tools.RandomString;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 
-public class TicketOrderBO {
+public class TicketOrderService {
     public boolean createOrder(BookingRecord record){
         record.setStatus(1);
         record.setCreateTime(new Timestamp(System.currentTimeMillis()));

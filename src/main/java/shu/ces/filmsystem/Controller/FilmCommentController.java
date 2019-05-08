@@ -3,7 +3,7 @@ package shu.ces.filmsystem.Controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import shu.ces.filmsystem.BO.FilmCommentBO;
+import shu.ces.filmsystem.Service.FilmCommentService;
 import shu.ces.filmsystem.Model.FilmComment;
 
 @RestController
@@ -23,7 +23,7 @@ public class FilmCommentController {
             Comment.setFilmId(filmId);
             Comment.setFilmStar(filmStar);
             Comment.setComment(comment);
-            return new FilmCommentBO().insertComment(Comment);
+            return new FilmCommentService().insertComment(Comment);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -33,14 +33,14 @@ public class FilmCommentController {
 
     @RequestMapping(value = "/filmcomment", method = RequestMethod.GET)
     public FilmComment getFilmComment(@RequestParam Integer id){
-        return new FilmCommentBO().findFilmCommentById(id);
+        return new FilmCommentService().findFilmCommentById(id);
     }
 
     @RequestMapping(value = "/filmcomment", method = RequestMethod.PUT)
     public boolean updateFilmComment(@RequestParam("id") Integer id,
                                      @RequestParam("filmStar") Integer filmStar,
                                      @RequestParam("comment") String comment){
-        FilmCommentBO commentBO = new FilmCommentBO();
+        FilmCommentService commentBO = new FilmCommentService();
         FilmComment Comment = commentBO.findFilmCommentById(id);
         if(comment == null){
             return false;
@@ -52,6 +52,6 @@ public class FilmCommentController {
 
     @RequestMapping(value = "/filmcomment", method = RequestMethod.DELETE)
     public boolean deleteFilmComment(@RequestParam Integer id){
-        return new FilmCommentBO().deleteComment(id);
+        return new FilmCommentService().deleteComment(id);
     }
 }
