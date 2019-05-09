@@ -3,43 +3,41 @@ package shu.ces.filmsystem.Service;
 import shu.ces.filmsystem.Model.Customer;
 
 public class CustomerService {
-    public boolean insertCustomer(Customer customer){
+    public boolean insertCustomer(Customer customer) {
         // add to database
         return true;
     }
 
-    public boolean updateCustomer(Customer customer){
+    public boolean updateCustomer(Customer customer) {
         // add to database
         return true;
     }
 
-    public boolean deleteCustomer(int id){
+    public boolean deleteCustomer(int id) {
         //delete in database
         return true;
     }
 
-    public Customer findCustomerById(int id){
+    public Customer findCustomerById(int id) {
         // find in database
         return null;
     }
 
-    public Customer findCustomerByName(String name){
+    public Customer findCustomerByName(String name) {
         // find in database
         return null;
     }
 
-    public int checkCustomer(String username, String password){
+    public int checkCustomer(String username, String password) {
         // check
         Customer customer = findCustomerByName(username);
-        if(customer != null){
-            if(password.equals(customer.getPassword())){
+        if (customer != null) {
+            if (password.equals(customer.getPassword())) {
                 return customer.getId();
-            }
-            else{   // password error
+            } else {   // password error
                 return 0;
             }
-        }
-        else{   // customer not found
+        } else {   // customer not found
             return -1;
         }
     }
