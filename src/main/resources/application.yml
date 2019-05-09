@@ -4,6 +4,13 @@ spring:
     username: root
     password: Password123
     # driver-class-name： com.mysql.jdbc.Driver
+  jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate.ddl-auto: update
+    hibernate.naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
 
 server:
   port: 8010
