@@ -41,11 +41,11 @@ public class AdministratorController {
         return new AdministratorService().findAdministratorById(id);
     }
 
-    @RequestMapping(value = "/administrator", method = RequestMethod.GET)
-    public Administrator getAdministrator(@RequestParam String name){
-        // find administrator by id in database
-        return new AdministratorService().findAdministratorByName(name);
-    }
+//    @RequestMapping(value = "/administrator", method = RequestMethod.GET)
+//    public Administrator getAdministrator(@RequestParam String name){
+//        // find administrator by id in database
+//        return new AdministratorService().findAdministratorByName(name);
+//    }
 
     @RequestMapping(value = "/administrator", method = RequestMethod.PUT)
     public boolean updateAdministrator(@RequestParam("id") Integer id,
